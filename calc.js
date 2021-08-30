@@ -5,11 +5,11 @@ function insertCoin(self){
   setColor();
   document.getElementById("result").innerHTML = coin;
 }
-function getItem(self){
+function getItem(id, self){
   if (coin >= self) {   
     coin = coin - self;
     document.getElementById("result").innerHTML = coin;
-    alert(coin+"원이 남았습니다.");
+    alert(document.getElementById(id).value+"이/가 구매되었습니다. " + coin+"원이 남았습니다.");
     setColor();
   } else{
     alert("돈이 부족합니다.");
