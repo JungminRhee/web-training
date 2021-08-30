@@ -1,4 +1,4 @@
-<!<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <title> webex02 </title>
@@ -9,36 +9,41 @@
   <input
     id="coffee"
     type="button"
-    value="coffee (700 won)"
-    onclick=""/>
+    value="커피 (700원)"
+    onclick="getItem(700)"/>
   <input
     id="tea"
     type="button"
-    value="tea (1000 won)"
-    onclick=""/>
+    value="차 (1000원)"
+    onclick="getItem(1000)"/>
   <input
     id="water"
     type="button"
-    value="water (500 won)"
-    onclick=""/>
+    value="물 (500원)"
+    onclick="getItem(500)"/>
   <p>
   <input
     id="1000"
     type="button"
-    value="1000 won"
-    onclick=""/>
+    value="1000원 넣기"
+    onclick="insertCoin(1000)
+    "/>
   <input
     id="500"
     type="button"
-    value="500 won"
-    onclick=""/>
+    value="500원 넣기"
+    onclick="
+    insertCoin(500);
+    "/>
   <input
     id="100"
     type="button"
-    value="100 won"
-    onclick=""/>
+    value="100원 넣기"
+    onclick="insertCoin(100);
+    "/>
+    
   </p>
-    current coin:
+  Total Coin : <span id="result"></span>
   <p>
   </p>
 </body>
