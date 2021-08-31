@@ -26,7 +26,6 @@ function solution(new_id) {
     }        
     document.write('idCheck6: '+idCheck6+ '<br>');
     answer = idCheck6;
-    document.write('idCheck7: '+idCheck7+ '<br>');
     document.write('answer: '+answer);
     return answer;
 }   
