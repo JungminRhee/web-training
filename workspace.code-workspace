@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "web-training",
+			"path": "..\\web-training"
+		}
+	],
+	"settings": {
+		"projectManager.git.baseFolders": [
+			"web-training"
+		]
+	}
+}
