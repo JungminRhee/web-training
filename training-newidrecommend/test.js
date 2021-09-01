@@ -1,31 +1,33 @@
 function solution(new_id) {
-    document.write('input: '+ new_id + '<br>');
     var answer = '';
-    var idCheck3 = '';
-    var temp ='';
-    var reg = /[\{\}\[\]\/?,;:|\)*~`!^\+<>@\#$%&\\\=\(\'\"]/gi
-    var idCheck1 = String(new_id);
-    var idCheck2 = idCheck1.toLowerCase().replace(reg,'');
-    document.write('idCheck2: ' + idCheck2 + '<br>');
-    for (var i=0; i<idCheck2.match(/\./g).length; i++){ 
-        idCheck3 = idCheck2.replace(/\.\./g,'.');
-        temp = idCheck3;
-        idCheck2 = idCheck3;
-    };
-    document.write('idCheck3: ' + idCheck3 + '<br>');
-    var idCheck4 = idCheck3.replace(/^\./,'').replace(/\.$/,'');
-    document.write('idCheck4: ' + idCheck4 + '<br>');
-    var idCheck5 = idCheck4.replace(null, "a");
-    document.write('idCheck5: ' + idCheck5 + '<br>');
-    temp = '';
-    if (idCheck5.length >= 16){
-        temp = idCheck5.slice(0,15);
-        var idCheck6 = temp.replace(/\.$/,'');
-    } else{
-        var idCheck6 = idCheck5;
-    }        
-    document.write('idCheck6: '+idCheck6+ '<br>');
-    answer = idCheck6;
-    document.write('answer: '+answer);
+    answer = new_id.toLowerCase();
+    answer = answer.replace(/[^\w-._]+/gi,'');
+    answer = answer.replace(/\.\.+/g,'.');
+    answer = answer.replace(/\.$/g,'');
+    answer = answer.replace(/^\./g,'');
+    if(answer === '') answer = 'a';
+    if(answer.length >= 16){
+        var newAnswer = answer.substr(0,15);
+        answer = newAnswer.replace(/\.$/g,'');
+    }
+    if(answer.length <= 2){
+        var newAnswer = answer.substr(answer.length-1,1);
+        for(var i = answer.length; i < 3; i++){
+            answer = answer + newAnswer;
+        }
+    }
     return answer;
 }   
+
+
+function solution2(new_id) {
+    const answer = new_id
+        .toLowerCase() // 1
+        .replace(/[^\w-_.]/g, '') // 2
+        .replace(/\.+/g, '.') // 3
+        .replace(/^\.|\.$/g, '') // 4
+        .replace(/^$/, 'a') // 5
+        .slice(0, 15).replace(/\.$/, ''); // 6
+    const len = answer.length;
+    return len > 2 ? answer : answer + answer.charAt(len - 1).repeat(3 - len);
+}
