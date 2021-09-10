@@ -46,12 +46,13 @@
 
 // console.log(person.height);
 
-function Person(name) {
-    this.name = name;
-    this.greeting = function(){
-        console.log('Hi! I\'m ' + this.name + '.');
-    };
-}
+// function Person(name) {
+//     this.name = name;
+//     this.greeting = function(){
+//         console.log('Hi! I\'m ' + this.name + '.');
+//     };
+// }
 
-var person1 = new Person('Bob');
-person1.greeting();
+// var person1 = new Person('Bob');
+// person1.greeting();
+
