@@ -49,6 +49,8 @@ pickFruits().then(console.log);
 // 3. useful Promise APIs
 // 병렬적으로 실행할 수 있는 경우에는 Promise에 있는 API를 사용한다.
 // promise에는 아래처럼 유용한 API가 있다!
+// promise.all 병렬적으로 수행해서 한번에 보여준다!
+// promise.race 빠른거 한가지만 먼저 보여준다!
 function pickAllFruits() {
   return Promise.all([getApple(), getBanana()]).then((fruits) =>
     fruits.join(" + ")
