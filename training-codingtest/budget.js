@@ -6,9 +6,30 @@
 // budget : 예산, 1 이상 10,000,000 이하의 자연수
 
 function solution(d, budget) {
-  var answer = 0;
-  return answer;
+  const dept = d.sort((a, b) => a - b);
+  let total = 0;
+  let count = 0;
+
+  for (let i = 0; i < d.length; i++) {
+    total = total + dept[i];
+    if (total <= budget) {
+      count++;
+    }
+  }
+  return count;
 }
 
 console.log(solution([1, 3, 2, 5, 4], 9));
 console.log(solution([2, 2, 3, 3], 10));
+
+function solution2(d, budget) {
+  let answer = 0;
+  let money = 0;
+  d.sort((a, b) => a - b).forEach(function (val) {
+    money += val;
+    if (money <= budget) {
+      answer++;
+    }
+  });
+  return answer;
+}
