@@ -17,6 +17,61 @@
 // 정수 배열의 각 원소 x를 이진수로 변환했을 때의 길이는 n 이하이다.
 
 function solution(n, arr1, arr2) {
-  var answer = [];
+  let array1 = [];
+  let array2 = [];
+  let result = [];
+  let answer = [];
+  for (let i = 0; i < n; i++) {
+    arr1[i].toString(2).length < n
+      ? array1.push(
+          new Array(n - arr1[i].toString(2).length + 1).join("0") +
+            arr1[i].toString(2)
+        )
+      : array1.push(arr1[i].toString(2));
+
+    arr2[i].toString(2).length < n
+      ? array2.push(
+          new Array(n - arr2[i].toString(2).length + 1).join("0") +
+            arr2[i].toString(2)
+        )
+      : array2.push(arr2[i].toString(2));
+  }
+  for (let i = 0; i < n; i++) {
+    result.push([]);
+    for (let j = 0; j < n; j++) {
+      if (array1[i][j] === "0" && array2[i][j] === "0") {
+        result[i].push(" ");
+      } else {
+        result[i].push("#");
+      }
+    }
+    answer.push(result[i].join(""));
+  }
   return answer;
 }
+
+//console.log(solution(6, [46, 33, 33, 22, 31, 50], [27, 56, 19, 14, 14, 10]));
+
+// OR 연산자 |
+// 두 비트 중 하나라도 1이면 1, 두 비트가 모드 0일때만 0 반환
+function solution2(n, arr1, arr2) {
+  return arr1.map((v, i) => {
+    addZero(n, (v | arr2[i]).toString(2)).replace(/1|0/g, (a) =>
+      +a ? "#" : " "
+    );
+  });
+}
+const addZero = (n, s) => {
+  return "0".repeat(n - s.length) + s;
+};
+
+console.log(solution2(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28]));
+
+var solution3 = (n, arr1, arr2) =>
+  arr1.map((a, i) =>
+    (a | arr2[i])
+      .toString(2)
+      .padStart(n, 0)
+      .replace(/0/g, " ")
+      .replace(/1/g, "#")
+  );
